@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login_textView">Welcome. Please Login or Sign Up</string>
+    <string name="empty_email_error">Email cannot be empty!</string>
+    <string name="empty_password_error">Password cannot be empty!</string>
+    <string name="welcome_text">Welcome to the Shoe Store!</string>
+    <string name="welcome_text_desc">This is your one stop shop for all your shoe needs.\nWe offer shoes of all types, colors, sizes and functions.\nYou are bound to find the perfect fit for your specific tastes.</string>
+    <string name="next">Next</string>
+    <string name="instructions_how_to_use_text">Instructions</string>
+    <string name="instructions_how_to_use_text_desc">On the next page, you will find all the currently available shoes.\nIf you wish to learn more details about a specific shoe, click the \"Details\" button.\nIf you would like to offer your own shoe, click the button at the bottom and fill in some information regarding the shoe.\nHappy Shoe Shopping!~</string>
+    <string name="details_button">Details Button</string>
+    <string name="name">Name</string>
+    <string name="company">Company</string>
+    <string name="size">Size</string>
+    <string name="desc">Description</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="details">Details</string>
+</resources>
