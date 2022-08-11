@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore.databinding.FragmentAddShoeBinding
 import com.example.shoestore.models.Shoe
@@ -12,6 +13,7 @@ import com.example.shoestore.models.Shoe
 class AddShoeFragment : Fragment() {
 
     private lateinit var binding : FragmentAddShoeBinding
+    private val shoeViewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,20 +26,17 @@ class AddShoeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.saveButton.setOnClickListener {
-            val shoe = Shoe(
-                binding.shoeNameText.text.toString(),
-                binding.sizeText.text.toString().toDouble(),
-                binding.companyNameText.text.toString(),
-                binding.descText.text.toString(),
-                listOf<Int>()
-            )
-            findNavController().navigate(AddShoeFragmentDirections.actionAddShoeFragmentToShoeListFragment(shoe))
+        binding.apply {
+            viewModel = shoeViewModel
+            saveButton.setOnClickListener {
+                shoeViewModel.saveShoe()
+                findNavController().navigate(AddShoeFragmentDirections.actionAddShoeFragmentToShoeListFragment())
+            }
+            cancelButton.setOnClickListener {
+                findNavController().navigate(AddShoeFragmentDirections.actionAddShoeFragmentToShoeListFragment())
+            }
         }
 
-        binding.cancelButton.setOnClickListener {
-            findNavController().navigate(AddShoeFragmentDirections.actionAddShoeFragmentToShoeListFragment(null))
-        }
     }
 
 }

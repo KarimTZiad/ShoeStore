@@ -2,13 +2,12 @@ package com.example.shoestore
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoestore.databinding.ASingleShoeItemBinding
 import com.example.shoestore.models.Shoe
 
-class ShoeAdapter() : RecyclerView.Adapter<ShoeAdapter.ViewHolder>(){
+class ShoeAdapter(private val shoeViewModel: ShoeViewModel) : RecyclerView.Adapter<ShoeAdapter.ViewHolder>(){
 
     private var shoesList = emptyList<Shoe>()
 
@@ -21,14 +20,15 @@ class ShoeAdapter() : RecyclerView.Adapter<ShoeAdapter.ViewHolder>(){
     override fun getItemCount() = shoesList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(shoesList[position])
+        holder.bind(shoesList[position], shoeViewModel)
     }
 
     class ViewHolder(private val binding: ASingleShoeItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(shoeItem: Shoe) {
+        fun bind(shoeItem: Shoe, shoeViewModel: ShoeViewModel) {
             binding.shoe = shoeItem
             binding.detailsButton.setOnClickListener{
-                itemView.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(shoeItem))
+                shoeViewModel.setShoeValues(shoeItem)
+                itemView.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
             }
         }
     }

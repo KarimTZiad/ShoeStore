@@ -73,21 +73,12 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
-        <argument
-            android:name="shoe"
-            android:defaultValue="@null"
-            app:argType="com.example.shoestore.models.Shoe"
-            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"
         android:name="com.example.shoestore.ShoeDetailFragment"
         android:label="Shoe Details"
-        tools:layout="@layout/fragment_shoe_detail">
-        <argument
-            android:name="shoe"
-            app:argType="com.example.shoestore.models.Shoe" />
-    </fragment>
+        tools:layout="@layout/fragment_shoe_detail"/>
     <fragment
         android:id="@+id/addShoeFragment"
         android:name="com.example.shoestore.AddShoeFragment"

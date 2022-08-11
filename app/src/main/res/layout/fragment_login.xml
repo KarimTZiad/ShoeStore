@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <!-- LinearLayout as the views are all mostly oriented vertically above each other
+         except for the two buttons, which are in a nested LinearLayout -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"

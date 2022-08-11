@@ -4,11 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoestore.models.Shoe
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ShoeViewModel : ViewModel() {
     val readAllShoes: LiveData<ArrayList<Shoe>>
+    val shoeName = MutableLiveData<String>()
+    val shoeCompany = MutableLiveData<String>()
+    val shoeSize = MutableLiveData<String>()
+    val shoeDesc = MutableLiveData<String>()
+    val shoeImages = MutableLiveData<List<Int>>()
 
     init {
         val shoes = ArrayList<Shoe>()
@@ -20,9 +24,28 @@ class ShoeViewModel : ViewModel() {
         readAllShoes = MutableLiveData<ArrayList<Shoe>>(shoes)
     }
 
-    fun addShoe(shoe : Shoe){
-        if(!readAllShoes.value!!.contains(shoe)){
-            readAllShoes.value!!.add(shoe)
+    fun saveShoe(){
+        if( !(
+                    shoeName.value!!.isBlank() || shoeCompany.value!!.isBlank()
+                    || shoeSize.value!!.isBlank() || shoeDesc.value!!.isBlank())){
+            readAllShoes.value?.add(Shoe(shoeName.value!!, shoeSize.value!!.toDouble(), shoeCompany.value!!, shoeDesc.value!!, listOf()))
+            resetShoeValues()
         }
+    }
+
+    fun resetShoeValues(){
+        shoeName.value = ""
+        shoeCompany.value = ""
+        shoeSize.value = ""
+        shoeDesc.value = ""
+        shoeImages.value = listOf()
+    }
+
+    fun setShoeValues(shoe : Shoe){
+        shoeName.value = shoe.name
+        shoeCompany.value = shoe.company
+        shoeSize.value = shoe.size.toString()
+        shoeDesc.value = shoe.description
+        shoeImages.value = shoe.images
     }
 }

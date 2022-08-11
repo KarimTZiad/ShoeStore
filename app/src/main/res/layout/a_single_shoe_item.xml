@@ -5,7 +5,7 @@
             name="shoe"
             type="com.example.shoestore.models.Shoe" />
     </data>
-
+    <!-- Using a constraint layout as items arent arranged in just one orientation (Horizontal/Vertical) -->
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"

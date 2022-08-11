@@ -4,62 +4,63 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="shoe"
-            type="com.example.shoestore.models.Shoe" />
+            name="viewModel"
+            type="com.example.shoestore.ShoeViewModel" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ShoeDetailFragment"
-    android:orientation="vertical"
-    android:padding="10dp">
-
-    <ImageView
-        android:id="@+id/shoeImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="fitCenter"
-        android:layout_gravity="center"
-        app:imageResource="@{shoe.images[0]}"
-        tools:src="@drawable/splatoon_black_dakroniks" />
-
-    <TextView
-        android:id="@+id/shoeNameTextView"
-        style="@style/TextViewValue"
-        android:textSize="30sp"
+    <!-- LinearLayout as the views are all oriented vertically above each other -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="10dp"
-        android:text="@{shoe.name}"
-        tools:text="Black Dakroniks"/>
+        android:layout_height="match_parent"
+        tools:context=".ShoeDetailFragment"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/companyTextview"
-        style="@style/TextViewValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:text="@{shoe.company}"
-        tools:text="Splatoon"/>
+        <ImageView
+            android:id="@+id/shoeImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            app:imageResource="@{viewModel.shoeImages[0]}"
+            tools:src="@drawable/splatoon_black_dakroniks" />
 
-    <TextView
-        android:id="@+id/sizeTextView"
-        style="@style/TextViewValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text='@{String.format("Available Size: %.1f",shoe.size)}'
-        tools:text="Available Size: 24.0"/>
+        <TextView
+            android:id="@+id/shoeNameTextView"
+            style="@style/TextViewValue"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.shoeName}"
+            tools:text="Black Dakroniks"/>
 
-    <TextView
-        android:id="@+id/descTextView"
-        style="@style/TextViewValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@{shoe.description}"
-        tools:text="Description" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/companyTextview"
+            style="@style/TextViewValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:text="@{viewModel.shoeCompany}"
+            tools:text="Splatoon"/>
+
+        <TextView
+            android:id="@+id/sizeTextView"
+            style="@style/TextViewValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text='@{String.format("Available Size: %s",viewModel.shoeSize)}'
+            tools:text="Available Size: 24.0"/>
+
+        <TextView
+            android:id="@+id/descTextView"
+            style="@style/TextViewValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.shoeDesc}"
+            tools:text="Description" />
+    </LinearLayout>
 </layout>

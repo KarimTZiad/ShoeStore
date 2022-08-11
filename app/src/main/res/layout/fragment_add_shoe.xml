@@ -2,9 +2,11 @@
 <layout>
     <data>
         <variable
-            name="shoe"
-            type="com.example.shoestore.models.Shoe" />
+            name="viewModel"
+            type="com.example.shoestore.ShoeViewModel" />
     </data>
+    <!-- LinearLayout as the views are all mostly oriented vertically above each other
+         except for the two buttons, which are in a nested LinearLayout -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -28,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
+                android:text="@={viewModel.shoeName}"
                 android:inputType="textCapWords"
                 tools:text="Flip-Flops" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/company"
+                android:text="@={viewModel.shoeCompany}"
                 android:inputType="textCapWords"
                 tools:text="Animal Crossing" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -66,6 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/size"
+                android:text="@={viewModel.shoeSize}"
                 android:inputType="numberDecimal"
                 tools:text="40.0" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -85,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/desc"
+                android:text="@={viewModel.shoeDesc}"
                 android:inputType="text"
                 tools:text="Comfortable for home and leisure" />
         </com.google.android.material.textfield.TextInputLayout>

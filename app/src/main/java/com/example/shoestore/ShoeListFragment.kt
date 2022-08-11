@@ -1,18 +1,14 @@
 package com.example.shoestore
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoestore.databinding.FragmentShoeListBinding
 import com.example.shoestore.models.Shoe
@@ -20,8 +16,7 @@ import com.example.shoestore.models.Shoe
 class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
-    private lateinit var shoeViewModel: ShoeViewModel
-    private val args : ShoeListFragmentArgs by navArgs()
+    private val shoeViewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
     : View? {
@@ -48,13 +43,10 @@ class ShoeListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        shoeViewModel = ViewModelProvider(this)[ShoeViewModel::class.java]
-        if(args.shoe!=null){
-            shoeViewModel.addShoe(args.shoe!!)
-        }
+        shoeViewModel.resetShoeValues()
         binding.shoeRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ShoeAdapter()
+            adapter = ShoeAdapter(shoeViewModel)
             shoeViewModel.readAllShoes.observe(viewLifecycleOwner, Observer {shoe ->
                 (adapter as ShoeAdapter).setData(shoe)
             })
